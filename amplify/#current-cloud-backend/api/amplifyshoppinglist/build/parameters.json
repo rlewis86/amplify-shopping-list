@@ -1,0 +1,14 @@
+{
+    "CreateAPIKey": 0,
+    "AppSyncApiName": "amplifyshoppinglist",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authamplifyshoppinglist14564907",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "S3DeploymentBucket": "amplify-amplifyshoppinglist-dev-192922-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/7ad205ffd08b286f5c88f9a213ae81e3fbd8dfa8"
+}

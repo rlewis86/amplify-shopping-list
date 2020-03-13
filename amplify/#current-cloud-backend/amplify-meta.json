@@ -1,0 +1,62 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-amplifyshoppinglist-dev-192922-authRole",
+			"UnauthRoleArn": "arn:aws:iam::937212392318:role/amplify-amplifyshoppinglist-dev-192922-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::937212392318:role/amplify-amplifyshoppinglist-dev-192922-authRole",
+			"Region": "us-east-2",
+			"DeploymentBucketName": "amplify-amplifyshoppinglist-dev-192922-deployment",
+			"UnauthRoleName": "amplify-amplifyshoppinglist-dev-192922-unauthRole",
+			"StackName": "amplify-amplifyshoppinglist-dev-192922",
+			"StackId": "arn:aws:cloudformation:us-east-2:937212392318:stack/amplify-amplifyshoppinglist-dev-192922/ced09c40-625d-11ea-bab9-066dd16eed5a",
+			"AmplifyAppId": "d2ca2yxxnf7azi"
+		}
+	},
+	"auth": {
+		"amplifyshoppinglist14564907": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifyshoppinglist-dev-192922-deployment/amplify-cfn-templates/auth/amplifyshoppinglist14564907-cloudformation-template.yml",
+				"logicalId": "authamplifyshoppinglist14564907"
+			},
+			"lastPushTimeStamp": "2020-03-10T12:53:10.923Z",
+			"output": {
+				"AppClientSecret": "3vjo9pgljlfpfptr4iijpgfrp27gdfpnsmr0bo3tk53ce8c1m7k",
+				"UserPoolId": "us-east-2_jVFMF9LT3",
+				"AppClientIDWeb": "2nlf4qtujqi8ikfkol05feeen8",
+				"AppClientID": "29gg6bs9doqc9b9frtjaav8m6r",
+				"IdentityPoolId": "us-east-2:4c8108dc-8bc7-46eb-bb40-f625b05a8e8c",
+				"IdentityPoolName": "amplifyshoppinglist14564907_identitypool_14564907__dev",
+				"UserPoolName": "amplifyshoppinglist14564907_userpool_14564907"
+			},
+			"lastPushDirHash": "TMTvfYjJs4/F1Hjts+K0QHU4REA="
+		}
+	},
+	"api": {
+		"amplifyshoppinglist": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authamplifyshoppinglist14564907"
+						}
+					}
+				},
+				"GraphQLAPIIdOutput": "o2ib4p5iwbht3ftrq3fsmcvfw4",
+				"GraphQLAPIEndpointOutput": "https://cdkqa2u4fvetxmo4eomzq7av3y.appsync-api.us-east-2.amazonaws.com/graphql"
+			},
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-amplifyshoppinglist-dev-192922-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+				"logicalId": "apiamplifyshoppinglist"
+			},
+			"lastPushTimeStamp": "2020-03-10T12:53:10.923Z",
+			"lastPushDirHash": "GmJEQ7x2SIeTTfAYPpidWxg/eAw="
+		}
+	}
+}

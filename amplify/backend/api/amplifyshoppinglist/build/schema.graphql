@@ -1,0 +1,147 @@
+type ShoppingListItem {
+  id: ID!
+  itemName: String!
+  owner: String
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelShoppingListItemConnection {
+  items: [ShoppingListItem]
+  nextToken: String
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+input ModelShoppingListItemFilterInput {
+  id: ModelIDInput
+  itemName: ModelStringInput
+  and: [ModelShoppingListItemFilterInput]
+  or: [ModelShoppingListItemFilterInput]
+  not: ModelShoppingListItemFilterInput
+}
+
+type Query {
+  getShoppingListItem(id: ID!): ShoppingListItem
+  listShoppingListItems(filter: ModelShoppingListItemFilterInput, limit: Int, nextToken: String): ModelShoppingListItemConnection
+}
+
+input CreateShoppingListItemInput {
+  id: ID
+  itemName: String!
+}
+
+input UpdateShoppingListItemInput {
+  id: ID!
+  itemName: String
+}
+
+input DeleteShoppingListItemInput {
+  id: ID
+}
+
+type Mutation {
+  createShoppingListItem(input: CreateShoppingListItemInput!, condition: ModelShoppingListItemConditionInput): ShoppingListItem
+  updateShoppingListItem(input: UpdateShoppingListItemInput!, condition: ModelShoppingListItemConditionInput): ShoppingListItem
+  deleteShoppingListItem(input: DeleteShoppingListItemInput!, condition: ModelShoppingListItemConditionInput): ShoppingListItem
+}
+
+input ModelShoppingListItemConditionInput {
+  itemName: ModelStringInput
+  and: [ModelShoppingListItemConditionInput]
+  or: [ModelShoppingListItemConditionInput]
+  not: ModelShoppingListItemConditionInput
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+type Subscription {
+  onCreateShoppingListItem(owner: String!): ShoppingListItem @aws_subscribe(mutations: ["createShoppingListItem"])
+  onUpdateShoppingListItem(owner: String!): ShoppingListItem @aws_subscribe(mutations: ["updateShoppingListItem"])
+  onDeleteShoppingListItem(owner: String!): ShoppingListItem @aws_subscribe(mutations: ["deleteShoppingListItem"])
+}
